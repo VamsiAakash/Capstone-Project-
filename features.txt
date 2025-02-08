@@ -1,0 +1,55 @@
+Permissions:
+
+READ_SMS / WRITE_SMS: These permissions allow the app to read and potentially write SMS messages on the device. While legitimate apps like messaging apps might need them,  malware could misuse them to steal message content or send spam messages without user consent.
+
+READ_CONTACTS / WRITE_CONTACTS: These permissions allow the app to access and potentially modify contact information on the device. While some social media apps might need them,  malware could steal contact information for malicious purposes.
+
+READ_PHONE_STATE: This permission allows the app to access information about the phone's state, such as network type, cell location, or current call status. Legitimate apps like network diagnostics tools might need it, but malware could misuse it for call spoofing or gathering information for network attacks.
+
+READ_EXTERNAL_STORAGE / WRITE_EXTERNAL_STORAGE: These permissions allow the app to read from and write to the device's external storage (like SD card). Many apps need this for storing data, but excessive access or access to sensitive locations could be a red flag for malware.
+
+ACCESS_FINE_LOCATION / ACCESS_COARSE_LOCATION: These permissions allow the app to access the device's location information, either with high precision (GPS) or lower accuracy (cell tower triangulation). While navigation apps or location-based services need them, some malware could misuse location data for tracking users or targeting them with malicious content.
+
+RECORD_AUDIO: This permission allows the app to record audio from the device's microphone. Legitimate apps like voice recorders might need it, but malware could misuse it for recording calls or ambient conversations without user consent.
+
+CAMERA: This permission allows the app to access the device's camera. While photo-taking or video calling apps need it, some malware could take pictures or videos without user knowledge.
+
+CALL_PHONE: This permission allows the app to directly initiate phone calls. While some VoIP apps might need it, some malware could misuse it for making unauthorized calls or generating revenue for attackers.
+
+INTERNET: This permission allows the app to access the internet. Most apps require internet access, but it's important to analyze the network traffic patterns of the app to identify any suspicious communication.
+
+GET_ACCOUNTS / USE_CREDENTIALS / AUTHENTICATE_ACCOUNTS: These permissions allow the app to access user accounts on the device (e.g., Google accounts) and potentially use their credentials for authentication purposes. While legitimate apps like social media logins might need them, some malware could steal these credentials for unauthorized access to user accounts.
+
+
+
+
+
+
+API Calls:
+ 
+TelephonyManager.getLine1Number / getSimSerialNumber / getDeviceId: These are methods of the TelephonyManager class that can be used to retrieve the phone's number, SIM card serial number, or device ID. While legitimate apps might use them for identification purposes, malware could misuse this information for malicious activities.
+
+sendMultipartTextMessage / divideMessage: These methods are used for sending SMS messages in parts. While legitimate apps might use them for sending long messages, malware could exploit them to bypass SMS character limitations for sending spam or malicious content.
+
+Runtime.getRuntime().exec() / ProcessBuilder: These methods allow the app to execute arbitrary commands on the device. This is a powerful functionality that should be used cautiously, as malware could misuse it to download and execute malicious code or manipulate the device.
+
+Ljava.lang.reflect. Classes (e.g., getDeclaredMethod, getClass): These are classes related to Java reflection, a technique that allows apps to inspect and potentially modify the behavior of other apps at runtime. While legitimate apps might use it for specific purposes, malware could exploit reflection to bypass security restrictions or inject malicious code.
+
+javax.crypto. Classes (e.g., SecretKeySpec, Cipher):* These are classes related to cryptography, which can be used for encryption and decryption of data. While legitimate apps might use them for secure communication, malware could use them to obfuscate malicious code or communication data to evade detection.
+
+
+
+
+
+
+Intents:
+
+android.intent.action.CALL / android.intent.action.CALL_BUTTON: These intents are used to initiate a phone call. While legitimate apps might use them for call functionality, some malware could misuse them for making unauthorized calls or generating revenue for attackers.
+
+android.intent.action.SEND / android.intent.action.SENDTO / android.intent.action.SEND_MULTIPLE: These intents are used to launch an activity for sending data (text, files, etc.). While legitimate apps might use them for sharing functionality, some malware could misuse them to send spam messages or user data to malicious servers.
+
+android.intent.action.SCREEN_OFF / android.intent.action.SCREEN_ON:  These intents indicate changes in the device'.
+
+android.intent.action.INSTALL_PACKAGE: This intent is used to launch the package installer for installing a new app on the device. Malicious apps might misuse this intent to download and install additional malware components without user consent. By monitoring attempts to use this intent, you can identify potential threats.
+
+android.intent.action.VIEW: This intent is used to launch an activity for viewing data or content. Malware might misuse this intent to open malicious websites containing phishing attempts, exploit kits, or drive-by downloads. By analyzing the URLs associated with this intent during app execution, you can identify suspicious behavior.
